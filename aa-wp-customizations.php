@@ -69,34 +69,34 @@ function aa_keep_me_logged_in_for( $expirein ) {
 add_filter( 'auth_cookie_expiration', 'aa_keep_me_logged_in_for' );
 
 
-/**
- * Auto Links in new Tab.
- *
- * Creates all external links to open in new tabs inside content and comments.
- *
- * @param  mixed $aa_new_text Comment or content text.
- * @return mixed $aa_new_text Comment or content text.
- * @since  1.0.0
- */
-function aa_auto_link_new_tab( $text ) {
-	// Don't do anything to the site URL.
-	$aa_site_url = site_url();
+// /**
+//  * Auto Links in new Tab.
+//  *
+//  * Creates all external links to open in new tabs inside content and comments.
+//  *
+//  * @param  mixed $aa_new_text Comment or content text.
+//  * @return mixed $aa_new_text Comment or content text.
+//  * @since  1.0.0
+//  */
+// function aa_auto_link_new_tab( $text ) {
+// 	// Don't do anything to the site URL.
+// 	$aa_site_url = site_url();
 
-	// Add the target attribute.
-	$aa_new_text = str_replace( 'href=', 'target="_blank" href=', $text );
+// 	// Add the target attribute.
+// 	$aa_new_text = str_replace( 'href=', 'target="_blank" href=', $text );
 
-	// Remove the target attribute from our site_url().
-	$aa_new_text = str_replace( 'target="_blank" href="' . $aa_site_url, 'href="' . $aa_site_url, $aa_new_text );
+// 	// Remove the target attribute from our site_url().
+// 	$aa_new_text = str_replace( 'target="_blank" href="' . $aa_site_url, 'href="' . $aa_site_url, $aa_new_text );
 
-	// Remove the target attribute from anchor tags.
-	$aa_new_text = str_replace( 'target="_blank" href="#', 'href="#', $aa_new_text );
+// 	// Remove the target attribute from anchor tags.
+// 	$aa_new_text = str_replace( 'target="_blank" href="#', 'href="#', $aa_new_text );
 
-	// Remove the target attribute from the end added by default.
-	$aa_new_text = str_replace( ' target = "_blank">', '>', $aa_new_text );
+// 	// Remove the target attribute from the end added by default.
+// 	$aa_new_text = str_replace( ' target = "_blank">', '>', $aa_new_text );
 
-	// Return the content.
-	return $aa_new_text;
-}
-// Hook to the post content and comments' text.
-add_filter( 'the_content', 'aa_auto_link_new_tab' );
-add_filter( 'comment_text', 'aa_auto_link_new_tab' );
+// 	// Return the content.
+// 	return $aa_new_text;
+// }
+// // Hook to the post content and comments' text.
+// add_filter( 'the_content', 'aa_auto_link_new_tab' );
+// add_filter( 'comment_text', 'aa_auto_link_new_tab' );
